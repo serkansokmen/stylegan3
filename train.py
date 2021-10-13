@@ -161,6 +161,10 @@ def parse_comma_separated_list(s):
 @click.option('--workers',      help='DataLoader worker processes', metavar='INT',              type=click.IntRange(min=1), default=3, show_default=True)
 @click.option('-n','--dry-run', help='Print training options and exit',                         is_flag=True)
 
+# Non-standard settings.
+@click.option('--resume_kimg',  help='Resume kimg', metavar='KIMG',                             type=click.IntRange(min=0), default=0, show_default=True)
+@click.option('--augment_p',    help='Initial aug probability', metavar='KIMG',                 type=click.FloatRange(min=0, max=1), default=0, show_default=True)
+
 def main(**kwargs):
     """Train a GAN using the techniques described in the paper
     "Alias-Free Generative Adversarial Networks".
@@ -175,7 +179,7 @@ def main(**kwargs):
     \b
     # Fine-tune StyleGAN3-R for MetFaces-U using 1 GPU, starting from the pre-trained FFHQ-U pickle.
     python train.py --outdir=~/training-runs --cfg=stylegan3-r --data=~/datasets/metfacesu-1024x1024.zip \\
-        --gpus=8 --batch=32 --gamma=6.6 --mirror=1 --kimg=5000 --snap=5 \\
+        --gpus=1 --batch=32 --gamma=6.6 --mirror=1 --kimg=5000 --snap=5 \\
         --resume=https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan3/versions/1/files/stylegan3-r-ffhqu-1024x1024.pkl
 
     \b
@@ -219,6 +223,10 @@ def main(**kwargs):
     c.image_snapshot_ticks = c.network_snapshot_ticks = opts.snap
     c.random_seed = c.training_set_kwargs.random_seed = opts.seed
     c.data_loader_kwargs.num_workers = opts.workers
+    
+    # Non-standard settings
+    c.resume_kimg = opts.resume_kimg
+    c.augment_p = opts.augment_p    # for when using ada/noaug, rather than fixed
 
     # Sanity checks.
     if c.batch_size % c.num_gpus != 0:
