@@ -24,6 +24,10 @@ Compatibility:
 - Supports old StyleGAN2 training configurations, including ADA and transfer learning. See [Training configurations](./docs/configs.md) for details.
 - Improved compatibility with Ampere GPUs and newer versions of PyTorch, CuDNN, etc.
 
+Changes in this fork:
+- Saves image files as .jpg instead of .png during training
+- Added ```--resume_kimg``` & ```--augment_p``` as options for resuming
+
 ## Synthetic image detection
 
 While new generator approaches enable new media synthesis capabilities, they may also present a new challenge for AI forensics algorithms for detection and attribution of synthetic media. In collaboration with digital forensic researchers participating in DARPA's SemaFor program, we curated a synthetic image dataset that allowed the researchers to test and validate the performance of their image detectors in advance of the public release. Please see [here](https://github.com/NVlabs/stylegan3-detector) for more details.
