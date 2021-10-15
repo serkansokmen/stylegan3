@@ -20,7 +20,7 @@ This repository is an updated version of [stylegan2-ada-pytorch](https://github.
 - General improvements: reduced memory usage, slightly faster training, bug fixes.
 
 Compatibility:
-- Compatible with old network pickles created using [stylegan2-ada](https://github.com/NVlabs/stylegan2-ada) and [stylegan2-ada-pytorch](https://github.com/NVlabs/stylegan2-ada-pytorch).
+- Compatible with old network pickles created using [stylegan2-ada](https://github.com/NVlabs/stylegan2-ada) and [stylegan2-ada-pytorch](https://github.com/NVlabs/stylegan2-ada-pytorch). Note: running old StyleGAN2 models on StyleGAN3 code will produce the same results as running them on stylegan2-ada/stylegan2-ada-pytorch.  To benefit from the StyleGAN3 architecture, you need to retrain.
 - Supports old StyleGAN2 training configurations, including ADA and transfer learning. See [Training configurations](./docs/configs.md) for details.
 - Improved compatibility with Ampere GPUs and newer versions of PyTorch, CuDNN, etc.
 
