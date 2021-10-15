@@ -27,6 +27,7 @@ Compatibility:
 Changes in this fork:
 - Saves image files as .jpg instead of .png during training
 - Added ```--resume_kimg``` & ```--augment_p``` as options for resuming
+- Includes ```sg3_clip.py```, which is a conversion of the nshepperd & RiversHaveWings colab - https://colab.research.google.com/drive/1eYlenR1GHPZXt-YuvXabzO9wfh9CWY36
 
 ## Synthetic image detection
 
